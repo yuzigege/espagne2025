@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barcelone - Explore la Ville Lumière</title>
+    <!-- On va utiliser Tailwind CSS pour styliser, c'est super facile ! -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Définition de la police "Feather Bold" (si tu veux l'utiliser ici aussi, sinon tu peux l'enlever) */
+        @font-face {
+            font-family: "Feather Bold";
+            src: url("https://db.onlinewebfonts.com/t/14936bb7a4b6575fd2eee80a3ab52cc2.eot");
+            src: url("https://db.onlinewebfonts.com/t/14936bb7a4b6575fd2eee80a3ab52cc2.eot?#iefix")format("embedded-opentype"),
+            url("https://db.onlinewebfonts.com/t/14936bb7a4b6575fd2eee80a3ab52cc2.woff2")format("woff2"),
+            url("https://db.onlinewebfonts.com/t/14936bb7a4b6575fd2eee80a3ab52cc2.woff")format("woff"),
+            url("https://db.onlinewebfonts.com/t/14936bb7a4b6575fd2eee80a3ab52cc2.ttf")format("truetype"),
+            url("https://db.onlinewebfonts.com/t/14936bb7a4b6575fd2eee80a3ab52cc2.svg#Feather Bold")format("svg");
+        }
+
+        /* On s'assure que HTML et BODY prennent 100% de la hauteur et largeur de la fenêtre */
+        html, body {
+            height: 100%;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden; /* Empêche le défilement horizontal */
+        }
+        /* On met une police sympa pour toute la page */
+        body {
+            font-family: 'Inter', sans-serif; /* Police par défaut pour le reste du corps */
+            /* Un joli dégradé de fond pour un look moderne, sans répétition */
+            background: linear-gradient(to right top, #a7bfe8, #619aed);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        /* Style pour les liens du menu pour qu'ils aient une belle interaction */
+        .menu-link {
+            transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
+        }
+        .menu-link:hover {
+            color: #d1d5db; /* Gris clair au survol */
+            transform: translateY(-2px); /* Petit effet de soulèvement */
+        }
+        /* Style pour les éléments du menu déroulant */
+        .dropdown-menu {
+            display: none; /* Caché par default */
+            position: absolute;
+            background-color: #374151; /* Couleur de fond du menu déroulant */
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            border-radius: 0.5rem; /* Coins arrondis */
+            top: 100%; /* S'affiche juste en dessous de l'élément parent */
+            left: 0;
+            padding: 0.5rem 0;
+        }
+        /* Quand on survole l'élément parent, le menu déroulant s'affiche */
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+        .dropdown-item {
+            color: white;
+            padding: 0.75rem 1rem;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+            transition: background-color 0.3s ease-in-out;
+        }
+        .dropdown-item:hover {
+            background-color: #4b5563; /* Couleur de fond au survol des items */
+            border-radius: 0.5rem; /* Coins arrondis pour les items aussi */
+        }
+
+        /* Style spécifique pour le titre "Espagne 2025" avec la police "Feather Bold" (si présente) */
+        .feather-bold-title {
+            font-family: "Feather Bold", sans-serif; /* Utilise la police personnalisée */
+        }
+    </style>
+</head>
+<body class="text-gray-900">
+    <!-- Barre de navigation (menu) qui reste en haut -->
+    <nav class="w-full bg-gray-800 bg-opacity-75 text-white p-4 flex justify-center sticky top-0 z-10">
+        <div class="container mx-auto flex justify-between items-center">
+            <!-- "Espagne 2025" avec la nouvelle police "Feather Bold" et l'emoji drapeau -->
+            <div class="flex items-center space-x-2">
+                <span class="text-3xl">🇪🇸</span> <!-- L'emoji du drapeau espagnol -->
+                <span class="text-2xl feather-bold-title">Espagne 2025</span>
+            </div>
+            <ul class="flex space-x-6">
+                <li><a href="test.html" class="menu-link text-lg">Accueil</a></li>
+                
+                <!-- Bouton "Applications" -->
+                <li><a href="#" class="menu-link text-lg">Applications</a></li>
+
+                <!-- Bouton "Groupes" -->
+                <li><a href="#" class="menu-link text-lg">Groupes</a></li>
+
+                <!-- Menu déroulant "Villes" avec seulement Barcelone -->
+                <li class="relative dropdown">
+                    <a href="#" class="menu-link text-lg">Villes</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="barcelone.html" class="dropdown-item">Barcelone</a></li>
+                    </ul>
+                </li>
+
+                <!-- Bouton "Organisation" -->
+                <li><a href="#" class="menu-link text-lg">Organisation</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Contenu principal de la page -->
+    <main class="flex-grow w-full max-w-4xl p-8 flex flex-col items-center justify-center text-center">
+        <h1 class="text-5xl font-extrabold text-gray-800 mb-6">Explore la Magnifique Barcelone !</h1>
+        <p class="text-gray-700 text-lg leading-relaxed mb-8">
+            Découvre les trésors cachés et les lieux emblématiques de cette ville incroyable.
+            De l'architecture de Gaudi aux plages ensoleillées, Barcelone t'attend.
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+            <!-- Exemple de carte d'information, on peut en ajouter plus ! -->
+            <div class="bg-gray-100 p-6 rounded-lg text-left">
+                <h3 class="text-xl font-semibold mb-2">La Sagrada Familia</h3>
+                <p class="text-gray-600">L'œuvre inachevée de Gaudi, un chef-d'œuvre architectural à couper le souffle.</p>
+            </div>
+            <div class="bg-gray-100 p-6 rounded-lg text-left">
+                <h3 class="text-xl font-semibold mb-2">Parc Güell</h3>
+                <p class="text-gray-600">Un parc public magnifique avec des jardins et des éléments architecturaux de Gaudi.</p>
+            </div>
+            <div class="bg-gray-100 p-6 rounded-lg text-left">
+                <h3 class="text-xl font-semibold mb-2">La Rambla</h3>
+                <p class="text-gray-600">L'avenue la plus célèbre de Barcelone, pleine de vie et d'artistes de rue.</p>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
